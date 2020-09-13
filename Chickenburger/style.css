@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@keyframes checked{
+    50%{      
+        width: 3000px;
+        height: 3000px;
+    }
+    100%{
+        width:100%;
+        height: 100%;
+        border-radius:0;
+    }    
+}
+
+:root{
+    --blue-color:rgb(17,115,196)
+
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+font-family:"Roboto";
+}
+
+.main{
+    background: rgb(8, 74,197); 
+    height: 100vh;
+    width: 100%;
+    
+}
+
+.main-content{
+   display:flex;
+   flex-direction:column;
+   justify-content: center;
+   align-items: flex-end;
+    height: 100%;
+    padding: 0 30px;
+    color: #ffffff;
+    font-weight: bold;
+}
+h1{
+    margin-bottom: 20px;
+} 
+.main-nav{
+    position: absolute;
+    top:0;
+    left:0;
+
+}
+
+li,a{
+    margin: 95px 0 -55px 0;
+    line-height: 1.8;
+    font-weight: 700;
+    text-decoration: none;
+    list-style: none;
+    display: none;
+    color:#ffffff;    
+}
+
+li{
+    width: 230px;
+    text-indent: 56px;
+}
+
+a:focus{
+    display: block;
+    color:#333;
+    background: #ffffff;
+}
+#trigger{
+    position: absolute;
+    top:25px;
+    left: 25px;
+    width: 30px;
+    height: 25px;    
+    cursor: pointer;
+    z-index: 2;
+    transition: 0.2s ease;
+
+}
+#burger{
+    position: absolute;
+    top:25px;
+    left: 25px;
+    width: 30px;
+    height: 5px;
+    background:var(--blue-color);
+    cursor: pointer;
+    z-index: 1;
+    transition: 0.2s ease;
+
+}
+#burger::before{
+    content: "";
+    position: absolute;
+    top:10px;
+    left: 0;
+    width: 30px;    
+    height: 5px;
+    background:var(--blue-color);
+    cursor: pointer;
+    transition: 0.2s ease;
+
+}
+#burger::after{
+    content: "";
+    position: absolute;
+    top:20px;
+    left: 0;
+    width: 30px;
+    height: 5px;
+    background:var(--blue-color);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.menu{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+    border-bottom-right-radius: 100%;    
+}
+
+.main-nav #menu-toggle:checked + #trigger + #burger + .menu{
+    animation: checked 1s ease both;
+}
+
+.main-nav #menu-toggle:checked + #trigger ~ .menu > li, a{
+    display: block;
+}
+
+.main-nav #menu-toggle:checked + #trigger + #burger{
+    top:35px;
+    transform: rotate(180deg);
+    transition: transform .2s ease;
+}
+
+.main-nav #menu-toggle:checked + #trigger + #burger::before{
+    width: 20px;
+    top:-2px;
+    left:18px;
+    transform: rotate(45deg) translateX(-5px);
+    transition: transform 0.2s ease; 
+}
+
+.main-nav #menu-toggle:checked + #trigger + #burger::after{
+    width: 20px;
+    top:2px;
+    left:18px;
+    transform: rotate(-45deg) translateX(-5px);
+    transition: transform 0.2s ease; 
+}
+
+[type="checkbox"]:checked, [type="checkbox"]:not(:checked){
+    display:none;
+
+}
